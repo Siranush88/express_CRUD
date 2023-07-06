@@ -21,7 +21,7 @@ const saveUsers = async (users:IUser[]):Promise<void> => {
     await writeFile('users.json', JSON.stringify(users, null, 2));
 }
 
-async function getAllUsers(_req:Request, res:Response):Promise<any> {
+async function getAllUsers(_req:Request, res:Response):Promise<void> {
     const users = await getUsers();
     if (!users) {
         res.status(404).json({ error: 'Users are not found' });
@@ -29,7 +29,7 @@ async function getAllUsers(_req:Request, res:Response):Promise<any> {
     res.json(users);
 }
 
-async function getUser(req:Request, res:Response):Promise<any> {
+async function getUser(req:Request, res:Response):Promise<void> {
     const users:IUser[] = await getUsers();
     const user:IUser = users.find((user) => user.id == Number(req.params.id))!;
     if (!user) {
