@@ -1,0 +1,11 @@
+[
+  {
+    "id": 1,
+    "name": "Artyom Avetisyan",
+    "age": 9,
+    "gender": "male",
+    "status": false,
+    "created": "2023-07-06T06:57:09.491Z",
+    "updated": "2023-07-06T06:57:09.491Z"
+  }
+]
