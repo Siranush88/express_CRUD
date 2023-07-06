@@ -1,11 +1,20 @@
 [
   {
     "id": 1,
-    "name": "Artyom Avetisyan",
-    "age": 9,
+    "name": "Valentina Avetisyan",
+    "age": 11,
+    "gender": "male",
+    "status": true,
+    "created": "2023-07-06T09:49:03.187Z",
+    "updated": "2023-07-06T09:51:36.075Z"
+  },
+  {
+    "id": 2,
+    "name": "Artur Avetisyan",
+    "age": 4,
     "gender": "male",
     "status": false,
-    "created": "2023-07-06T06:57:09.491Z",
-    "updated": "2023-07-06T06:57:09.491Z"
+    "created": "2023-07-06T09:49:59.055Z",
+    "updated": "2023-07-06T09:49:59.055Z"
   }
 ]

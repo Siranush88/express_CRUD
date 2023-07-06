@@ -1,7 +1,7 @@
-import express from 'express';
+import express, { Router } from 'express';
 import { getAllUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../controllers/users.controller.js';
 
-const usersRouter = express.Router();
+const usersRouter:Router = express.Router();
 
 usersRouter.get('/', apiKeyValidator, getAllUsers);
 usersRouter.get('/:id', apiKeyValidator, getUser);
