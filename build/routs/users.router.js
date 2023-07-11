@@ -1,5 +1,5 @@
 import express from 'express';
-import { getAllUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../controllers/users.controller.js';
+import { getAllUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../services/users.service.js';
 const usersRouter = express.Router();
 usersRouter.get('/', apiKeyValidator, getAllUsers);
 usersRouter.get('/:id', apiKeyValidator, getUser);
