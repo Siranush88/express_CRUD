@@ -1,9 +1,11 @@
 import express from 'express';
-import { getAllUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../services/users.service.js';
+//import { getUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../services/users.service.js';
+import { apiKeyValidator } from '../services/users.service.js';
+import { getAllUsersController, getUserController, createNewUserController, updateUserController, deleteUserController } from '../controllers/users.controller.js';
 const usersRouter = express.Router();
-usersRouter.get('/', apiKeyValidator, getAllUsers);
-usersRouter.get('/:id', apiKeyValidator, getUser);
-usersRouter.post('/', apiKeyValidator, createNewUser);
-usersRouter.delete('/:id', apiKeyValidator, deleteUser);
-usersRouter.put('/:id', apiKeyValidator, updateUser);
+usersRouter.get('/', apiKeyValidator, getAllUsersController);
+usersRouter.get('/:id', apiKeyValidator, getUserController);
+usersRouter.post('/', apiKeyValidator, createNewUserController);
+usersRouter.delete('/:id', apiKeyValidator, deleteUserController);
+usersRouter.put('/:id', apiKeyValidator, updateUserController);
 export default usersRouter;

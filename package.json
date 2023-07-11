@@ -3,11 +3,12 @@
   "name": "crud_express",
   "version": "1.0.0",
   "description": "",
-  "main": "app.js",
+  "main": "./build/server.js",
   "scripts": {
+    "watch": "nodemon ./build/server.js",
     "test": "echo \"Error: no test specified\" && exit 1",
     "build": "rimraf ./build && npx tsc",
-    "start": "npm run build && node build/server.js"
+    "start": "npm run watch && npm run build && node build/server.js"
   },
   "author": "",
   "license": "ISC",
@@ -23,3 +24,4 @@
     "@types/node": "^20.4.0"
   }
 }
+

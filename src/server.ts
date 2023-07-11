@@ -6,8 +6,11 @@ const PORT = process.env.PORT || 3000;
 
 app.use(express.json());
 
-app.use('/users', usersRouter)
+app.use('/users', usersRouter);
 
 app.listen(PORT, () => {
     console.log(`Listening on port ${PORT}`)
-})
+});
+
+// npm run build
+// npm start

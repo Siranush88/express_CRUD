@@ -1,7 +1,93 @@
+var __awaiter = (this && this.__awaiter) || function (thisArg, _arguments, P, generator) {
+    function adopt(value) { return value instanceof P ? value : new P(function (resolve) { resolve(value); }); }
+    return new (P || (P = Promise))(function (resolve, reject) {
+        function fulfilled(value) { try { step(generator.next(value)); } catch (e) { reject(e); } }
+        function rejected(value) { try { step(generator["throw"](value)); } catch (e) { reject(e); } }
+        function step(result) { result.done ? resolve(result.value) : adopt(result.value).then(fulfilled, rejected); }
+        step((generator = generator.apply(thisArg, _arguments || [])).next());
+    });
+};
+import { getUsers, getUser, createNewUser, updateUser, deleteUser } from '../services/users.service.js';
+export const getAllUsersController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const users = yield getUsers();
+        if (!users) {
+            res.status(404).json({ error: 'Users are not found' });
+        }
+        else {
+            res.json(users);
+        }
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+export const getUserController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = Number(req.params.id);
+        const user = yield getUser(userId);
+        if (!user) {
+            res.status(404).json({ error: 'User is not found' });
+        }
+        else {
+            res.json(user);
+        }
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
+export const createNewUserController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const newUser = {
+            id: req.body.id,
+            name: req.body.name,
+            age: req.body.age,
+            gender: req.body.gender,
+            status: false,
+            created: new Date().toISOString(),
+            updated: new Date().toISOString(),
+        };
+        yield createNewUser(newUser);
+        res.status(201).json({ message: 'New user is created successfully' });
+    }
+    catch (error) {
+        res.status(400).json({ error: 'Failed to create a new user' });
+    }
+});
+export const updateUserController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = Number(req.params.id);
+        const updatedUser = {
+            name: req.body.name,
+            age: req.body.age,
+            gender: req.body.gender,
+        };
+        const user = yield updateUser(userId, updatedUser);
+        if (!user) {
+            res.status(404).json({ error: 'User is not found' });
+        }
+        else {
+            res.json(user);
+        }
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Server error' });
+    }
+});
+export const deleteUserController = (req, res) => __awaiter(void 0, void 0, void 0, function* () {
+    try {
+        const userId = Number(req.params.id);
+        yield deleteUser(userId);
+        res.json({ message: 'User is deleted successfully' });
+    }
+    catch (error) {
+        res.status(500).json({ error: 'Internal server error' });
+    }
+});
 // import { readFile, writeFile } from 'fs/promises';
 // import {NextFunction, Request, Response} from 'express';
 // import { IUser } from './controllerTypes/controllerTypes.js';
-export {};
 // const KEY = 'a11';
 // const apiKeyValidator = (req:Request, res:Response, next:NextFunction):void | Response => {
 //     const apiKey = req.get('api-key');
