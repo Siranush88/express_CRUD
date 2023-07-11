@@ -1,5 +1,4 @@
 import express, { Router } from 'express';
-//import { getUsers, getUser, createNewUser, deleteUser, updateUser, apiKeyValidator } from '../services/users.service.js';
 import { apiKeyValidator } from '../services/users.service.js';
 import {getAllUsersController, getUserController, createNewUserController, updateUserController, deleteUserController} from '../controllers/users.controller.js';
 
